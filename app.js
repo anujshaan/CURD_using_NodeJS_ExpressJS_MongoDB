@@ -5,13 +5,14 @@ const morgan = require('morgan');
 const path = require('path');
 const Routes = require('./server/routes/router');
 const connectDB = require('./server/database/connection');
+const bodyParser = require('body-parser');
 
 const app = express();
 dotenv.config({path:'config.env'});
 
 
 //middleware
-app.use(express.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(morgan('common'));
 
 //mogodb connection
